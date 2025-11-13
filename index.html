@@ -2,274 +2,341 @@
 <html lang="ru">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Мое резюме</title>
-<!-- Подключение Google Fonts -->
-<link rel="preconnect" href="https://fonts.googleapis.com" />
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Портфолио менеджера по продажам</title>
+
+<!-- Google Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
 <style>
-  /* Общие стили */
-  body {
-    margin: 0;
-    font-family: 'Montserrat', sans-serif;
-    background-color: #0e0e0e;
-    color: #fff;
-    line-height: 1.6;
-  }
+/* Цветовая палитра и переменные */
+:root {
+  --bg-color: #111;
+  --accent-color: #ffd700;
+  --text-color: #ffd700;
+  --dark-color: #222;
+  --light-color: #333;
+  --border-color: #ffd700;
+}
 
-  /* Шапка */
-  header {
-    background: linear-gradient(135deg, #222, #333);
-    padding: 30px 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    text-align: center;
-  }
+/* Общие стили */
+body {
+  font-family: 'Roboto', sans-serif;
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  line-height: 1.6;
+}
 
-  .profile-header {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 15px;
-  }
+/* Контейнер */
+.content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
 
-  #name {
-    font-size: 2.8em;
-    font-weight: 700;
-    background: linear-gradient(90deg, #ffd700, #ff8c00);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    margin: 0;
-    letter-spacing: 2px;
-    animation: pulse 2s infinite;
-  }
-
-  #photo {
-    width: 150px;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 50%;
-    border: 4px solid #ffd700;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    transition: transform 0.3s, box-shadow 0.3s;
-  }
-
-  #photo:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
-  }
-
-  @keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-  }
-
-  /* Контейнер */
- .container {
-    max-width: 1100px;
-    margin: 40px auto;
-    padding: 0 20px;
-  }
-
-  /* Разделы */
-section {
-  margin-bottom: 50px;
+/* Заголовки */
+h1 {
+  text-align: center;
+  font-size: 2.5em;
+  margin-bottom: 20px;
+  font-weight: 700;
 }
 
 h2 {
+  text-align: center;
   font-size: 2em;
   margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #ffd700;
-  color: #ffd700;
-  position: relative;
-  display: inline-block;
   font-weight: 700;
-  letter-spacing: 1px;
-  opacity: 0;
-  transform: translateY(-20px);
-  animation: fadeInUp 1s forwards;
 }
 
-@keyframes fadeInUp {
+/* Разделы */
+section {
+  margin-bottom: 30px;
+}
+
+/* About */
+/*.about - flex по умолчанию, адаптация на мобильных */
+.about {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--dark-color);
+  padding: 20px;
+  border-radius: 10px;
+  animation: fadeIn 1s ease-in-out;
+  flex-wrap: wrap; /* для адаптивности */
+}
+
+.profile-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--accent-color);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.profile-photo:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
+}
+
+/* Текст о себе */
+.about div {
+  flex: 1;
+  min-width: 200px;
+}
+.about p {
+  font-size: 1.2em;
+  line-height: 1.5;
+}
+
+/* Навыки - карточки */
+.skills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+}
+
+.skill {
+  flex: 1 1 250px;
+  background-color: var(--dark-color);
+  padding: 15px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.skill:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+}
+
+.skill h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+  font-size: 1.5em;
+}
+
+/* Проекты - карточки с картинками и кнопками */
+.projects {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.project {
+  background-color: var(--dark-color);
+  padding: 15px;
+  border-radius: 8px;
+  border: 2px solid var(--border-color);
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.project:hover {
+  transform: scale(1.02);
+  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
+}
+.project h3 {
+  margin-top: 0;
+  color: var(--accent-color);
+}
+
+/* Кнопки */
+button {
+  margin-top: 10px;
+  padding: 8px 12px;
+  background-color: var(--accent-color);
+  color: #111;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: 700;
+  transition: background-color 0.3s;
+}
+button:hover {
+  background-color: #e6c200;
+}
+
+/* Контакты */
+.contacts {
+  background-color: var(--dark-color);
+  padding: 20px;
+  border-radius: 10px;
+  border: 2px solid var(--border-color);
+  animation: fadeIn 1s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.contacts p {
+  margin: 5px 0;
+}
+
+/* Футер */
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: var(--bg-color);
+  border-top: 2px solid var(--border-color);
+  font-size: 0.9em;
+  color: #ccc;
+}
+
+/* Анимации */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
   to {
     opacity: 1;
     transform: translateY(0);
   }
 }
 
-/* Внутренний контент */
-.section-content {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-  opacity: 0;
-  animation: fadeIn 1s forwards;
-  animation-delay: 0.5s;
+/* Модальное окно */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: fadeInModal 0.5s;
+}
+@keyframes fadeInModal {
+  from { opacity: 0; }
+  to { opacity: 1; }
 }
 
-@keyframes fadeIn {
-  to {
-    opacity: 1;
-  }
-}
-
-/* Карточки */
-.card {
-  background-color: #1a1a1a;
+.modal-content {
+  background-color: var(--dark-color);
+  margin: 10% auto;
   padding: 20px;
+  width: 90%;
+  max-width: 600px;
   border-radius: 10px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
+  border: 2px solid var(--border-color);
+  color: var(--accent-color);
+  position: relative;
+  animation: slideIn 0.3s ease-out;
+}
+@keyframes slideIn {
+  from { transform: translateY(-50px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
 }
 
-.card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+.close:hover {
+  color: #fff;
 }
 
-.card h3 {
-  margin-top: 0;
-  margin-bottom: 10px;
-  color: #ffd700;
-  font-size: 1.2em;
+/* Ссылки */
+a {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
 }
 
-#about, #contacts {
-  /* Особенность для разделов с текстом */
-}
-
-#about p, #contacts p {
-  margin: 10px 0;
-  font-size: 1.1em;
-}
-
-/* Контактная информация */
-.contact-info p {
-  margin: 8px 0;
-  font-size: 1.1em;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-@media(max-width: 768px) {
-  #name {
-    font-size: 2em;
+/* Медиа-запросы для очень маленьких экранов */
+@media(max-width: 400px) {
+  h1 { font-size: 2em; }
+  h2 { font-size: 1.5em; }
+  .about {
+    flex-direction: column;
+    align-items: center;
   }
-  #photo {
-    width: 120px;
-    height: 120px;
-  }
+  .profile-photo { width: 120px; height: 120px; }
+  .about p { font-size: 1em; }
+  .skill { flex: 1 1 200px; }
 }
 </style>
 </head>
 <body>
 
-<header>
-  <div class="profile-header">
-    <h1 id="name">Иван Иванов</h1>
-    <img id="photo" src="https://via.placeholder.com/150" alt="Фото Иванова" />
-  </div>
-</header>
+<div class="content">
 
-<div class="container">
+  <h1>Портфолио менеджера по продажам</h1>
 
-  <!-- О себе -->
-  <section id="about">
-    <h2>Обо мне</h2>
-    <div class="section-content" id="about-content">
-      <p>Привет! Я веб-разработчик с более чем 5-летним опытом создания современных и красивых веб-сайтов и приложений. Стремлюсь воплощать идеи в жизнь с помощью чистого кода и красивых анимаций.</p>
-    </div>
-  </section>
-
-  <!-- Навыки -->
-  <section id="skills">
-    <h2>Навыки</h2>
-    <div class="section-content" id="skills-content">
-      <div class="card skill">HTML5</div>
-      <div class="card skill">CSS3</div>
-      <div class="card skill">JavaScript</div>
-      <div class="card skill">React</div>
-      <div class="card skill">Node.js</div>
-      <div class="card skill">Git & GitHub</div>
-    </div>
-  </section>
-
-  <!-- Проекты -->
-  <section id="projects">
-    <h2>Проекты</h2>
-    <div class="section-content" id="projects-content">
-      <div class="card project">
-        <h3>Анимированный сайт-портфолио</h3>
-        <p>Современный дизайн с плавными анимациями, реализованный на React. Включает интерактивные галереи и плавные эффекты при скролле.</p>
-      </div>
-      <div class="card project">
-        <h3>Интерактивный блог</h3>
-        <p>Веб-приложение с динамическим контентом и эффектами на JavaScript. Возможность добавлять статьи, комментировать и делиться ими.</p>
-      </div>
-      <div class="card project">
-        <h3>Landing Page для продукта</h3>
-        <p>Адаптивная лендинг-страница с анимациями и стилизованными разделами, созданная с использованием HTML, CSS и JS.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Образование -->
-  <section id="education">
-    <h2>Образование</h2>
-    <div class="section-content" id="education-content">
-      <div class="card education">
-        <h3>Московский государственный университет</h3>
-        <p>Факультет информационных технологий, Бакалавр в области веб-разработки, 2015–2019.</p>
-      </div>
-      <div class="card education">
-        <h3>Курс "Современные веб-технологии"</h3>
-        <p>Онлайн-курс на платформе Coursera, 2021. Освоил React, Node.js, и современные практики разработки.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Контакты -->
-  <section id="contacts">
-    <h2>Контакты</h2>
-    <div class="section-content contact-info" id="contact-info">
-      <p><strong>Email:</strong> ivan@example.com</p>
-      <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
-      <p><strong>LinkedIn:</strong> linkedin.com/in/ivanivanov</p>
-    </div>
-  </section>
-
+  <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
+  <img src="https://via.placeholder.com/150" alt="Мое фото" class="profile-photo" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent-color); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
+  <h2 style="margin: 10px 0 0 0;">Иван Иванов</h2>
 </div>
 
-<script>
-  // Анимация появления элементов при скролле (оставим для интерактива)
-  document.addEventListener('DOMContentLoaded', () => {
-    const elements = document.querySelectorAll('.section-content');
+  <section id="about">
+    <div class="about">
+    
+      <div>
+        <h2>Об о мне</h2>
+        <p>Я профессиональный менеджер по продажам с опытом более 10 лет, умею выстраивать доверительные отношения с клиентами, достигать высоких результатов и работать в команде. Люблю помогать бизнесам расти и развиваться.</p>
+      </div>
+    </div>
+  </section>
 
-    const observerOptions = {
-      threshold: 0.1
-    };
+<section id="education">
+  <h2 style="text-align: center; margin-bottom: 20px;">Образование</h2>
+  <div style="background-color: var(--dark-color); padding: 20px; border-radius: 10px; border: 2px solid var(--border-color); max-width: 800px; margin: 0 auto;">
+    <h3 style="color: var(--accent-color); margin-top: 0;">Высшее учебное заведение</h3>
+    <p>Институт информационных технологий, специальность "Менеджмент", 2010-2014.</p>
+    <h3 style="color: var(--accent-color); margin-top: 20px;">Дополнительное образование</h3>
+    <ul>
+      <li>Курсы по продажам и переговорным техникам, 2015</li>
+      <li>Тренинги по личностному росту, 2018</li>
+    </ul>
+  </div>
+</section>
 
-    const observer = new IntersectionObserver((entries, observer) => {
-      entries.forEach(entry => {
-        if(entry.isIntersecting){
-          entry.target.style.animationPlayState = 'running';
-          observer.unobserve(entry.target);
-        }
-      });
-    }, observerOptions);
+  <section id="skills">
+    <h2>Навыки</h2>
+    <div class="skills">
+      <div class="skill">
+        <h3>Коммуникации</h3>
+        <p>Отличные навыки ведения переговоров и презентаций.</p>
+      </div>
+      <div class="skill">
+        <h3>Заключение сделок</h3>
+        <p>Опыт успешного закрытия крупных контрактов.</p>
+      </div>
+      <div class="skill">
+        <h3>Аналитика</h3>
+        <p>Анализ рынка и клиентской базы для повышения эффективности продаж.</p>
+      </div>
+    </div>
+  </section>
 
-    elements.forEach(el => {
-      el.style.animationPlayState = 'paused';
-      observer.observe(el);
-    });
-  });
-</script>
-
-</body>
-</html>
+  <section id="projects">
+    <h2 style="text-align:center; margin-bottom:20px;">Проекты</h2>
+    <div class="projects">
+      <div class="project">
+        <h3>Проект A</h3>
+        <p>Описание проекта A.</p>
+        <button onclick="showModal('Проект A', 'Детали проекта A - это было интересно!')">Подробнее</button>
+      </div>
+      <div class="project">
+        <h3>Проект B</h3>
+        <p>Описание проекта B.</p>
+        <button onclick="showModal('Проект B', 'Детали проекта B - успешная реализация.')">Подробнее</button>
+      </div>
+      <div class="project">
+        <h3>Проект C</h3>
+        <p>Описание проекта C.</p>
+        <button onclick="showModal('Проект C', 'Детали проекта C - инновационный подход.')">Подробнее</button>
+      </div>
+    </div
