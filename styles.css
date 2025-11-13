@@ -68,13 +68,19 @@ main section {
   display: flex;
   align-items: center;
   gap: 20px;
+    flex-direction: column;
 }
 
+
 .profile-photo {
-  width: 150px;
-  height: 150px;
+  max-width: 300px;
+  max-height: 300px;
   border-radius: 50%;
+  object-fit: cover; /* Ensures the image covers the area without distortion */
+  max-width: 100%; /* Makes it responsive by not exceeding container width */
+  aspect-ratio: 1; /* Maintains square aspect to keep it circular */
 }
+
 
 /* Адаптивность для about */
 @media (max-width: 768px) {
