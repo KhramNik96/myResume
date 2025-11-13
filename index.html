@@ -1,1 +1,275 @@
-1
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Мое резюме</title>
+<!-- Подключение Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet" />
+
+<style>
+  /* Общие стили */
+  body {
+    margin: 0;
+    font-family: 'Montserrat', sans-serif;
+    background-color: #0e0e0e;
+    color: #fff;
+    line-height: 1.6;
+  }
+
+  /* Шапка */
+  header {
+    background: linear-gradient(135deg, #222, #333);
+    padding: 30px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .profile-header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
+  #name {
+    font-size: 2.8em;
+    font-weight: 700;
+    background: linear-gradient(90deg, #ffd700, #ff8c00);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 0;
+    letter-spacing: 2px;
+    animation: pulse 2s infinite;
+  }
+
+  #photo {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 4px solid #ffd700;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  #photo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.5);
+  }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+  }
+
+  /* Контейнер */
+ .container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+  }
+
+  /* Разделы */
+section {
+  margin-bottom: 50px;
+}
+
+h2 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #ffd700;
+  color: #ffd700;
+  position: relative;
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 1px;
+  opacity: 0;
+  transform: translateY(-20px);
+  animation: fadeInUp 1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Внутренний контент */
+.section-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  opacity: 0;
+  animation: fadeIn 1s forwards;
+  animation-delay: 0.5s;
+}
+
+@keyframes fadeIn {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Карточки */
+.card {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+.card h3 {
+  margin-top: 0;
+  margin-bottom: 10px;
+  color: #ffd700;
+  font-size: 1.2em;
+}
+
+#about, #contacts {
+  /* Особенность для разделов с текстом */
+}
+
+#about p, #contacts p {
+  margin: 10px 0;
+  font-size: 1.1em;
+}
+
+/* Контактная информация */
+.contact-info p {
+  margin: 8px 0;
+  font-size: 1.1em;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+@media(max-width: 768px) {
+  #name {
+    font-size: 2em;
+  }
+  #photo {
+    width: 120px;
+    height: 120px;
+  }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="profile-header">
+    <h1 id="name">Иван Иванов</h1>
+    <img id="photo" src="https://via.placeholder.com/150" alt="Фото Иванова" />
+  </div>
+</header>
+
+<div class="container">
+
+  <!-- О себе -->
+  <section id="about">
+    <h2>Обо мне</h2>
+    <div class="section-content" id="about-content">
+      <p>Привет! Я веб-разработчик с более чем 5-летним опытом создания современных и красивых веб-сайтов и приложений. Стремлюсь воплощать идеи в жизнь с помощью чистого кода и красивых анимаций.</p>
+    </div>
+  </section>
+
+  <!-- Навыки -->
+  <section id="skills">
+    <h2>Навыки</h2>
+    <div class="section-content" id="skills-content">
+      <div class="card skill">HTML5</div>
+      <div class="card skill">CSS3</div>
+      <div class="card skill">JavaScript</div>
+      <div class="card skill">React</div>
+      <div class="card skill">Node.js</div>
+      <div class="card skill">Git & GitHub</div>
+    </div>
+  </section>
+
+  <!-- Проекты -->
+  <section id="projects">
+    <h2>Проекты</h2>
+    <div class="section-content" id="projects-content">
+      <div class="card project">
+        <h3>Анимированный сайт-портфолио</h3>
+        <p>Современный дизайн с плавными анимациями, реализованный на React. Включает интерактивные галереи и плавные эффекты при скролле.</p>
+      </div>
+      <div class="card project">
+        <h3>Интерактивный блог</h3>
+        <p>Веб-приложение с динамическим контентом и эффектами на JavaScript. Возможность добавлять статьи, комментировать и делиться ими.</p>
+      </div>
+      <div class="card project">
+        <h3>Landing Page для продукта</h3>
+        <p>Адаптивная лендинг-страница с анимациями и стилизованными разделами, созданная с использованием HTML, CSS и JS.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Образование -->
+  <section id="education">
+    <h2>Образование</h2>
+    <div class="section-content" id="education-content">
+      <div class="card education">
+        <h3>Московский государственный университет</h3>
+        <p>Факультет информационных технологий, Бакалавр в области веб-разработки, 2015–2019.</p>
+      </div>
+      <div class="card education">
+        <h3>Курс "Современные веб-технологии"</h3>
+        <p>Онлайн-курс на платформе Coursera, 2021. Освоил React, Node.js, и современные практики разработки.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Контакты -->
+  <section id="contacts">
+    <h2>Контакты</h2>
+    <div class="section-content contact-info" id="contact-info">
+      <p><strong>Email:</strong> ivan@example.com</p>
+      <p><strong>Телефон:</strong> +7 (999) 123-45-67</p>
+      <p><strong>LinkedIn:</strong> linkedin.com/in/ivanivanov</p>
+    </div>
+  </section>
+
+</div>
+
+<script>
+  // Анимация появления элементов при скролле (оставим для интерактива)
+  document.addEventListener('DOMContentLoaded', () => {
+    const elements = document.querySelectorAll('.section-content');
+
+    const observerOptions = {
+      threshold: 0.1
+    };
+
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          entry.target.style.animationPlayState = 'running';
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+
+    elements.forEach(el => {
+      el.style.animationPlayState = 'paused';
+      observer.observe(el);
+    });
+  });
+</script>
+
+</body>
+</html>
