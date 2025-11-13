@@ -1,351 +1,115 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-<title>Портфолио менеджера по продажам</title>
-
-<!-- Google Fonts -->
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-
-<style>
-/* Цветовая палитра и переменные */
-:root {
-  --bg-color: #111;
-  --accent-color: #ffd700;
-  --text-color: #ffd700;
-  --dark-color: #222;
-  --light-color: #333;
-  --border-color: #ffd700;
-}
-
-/* Общие стили */
-body {
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-  background-color: var(--bg-color);
-  color: var(--text-color);
-  line-height: 1.6;
-}
-
-/* Контейнер */
-.content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
-}
-
-/* Заголовки */
-h1 {
-  text-align: center;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-h2 {
-  text-align: center;
-  font-size: 2em;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-/* Разделы */
-section {
-  margin-bottom: 30px;
-}
-
-/* About */
-/*.about - flex по умолчанию, адаптация на мобильных */
-.about {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  background-color: var(--dark-color);
-  padding: 20px;
-  border-radius: 10px;
-  animation: fadeIn 1s ease-in-out;
-  flex-wrap: wrap; /* для адаптивности */
-}
-
-.profile-photo {
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 3px solid var(--accent-color);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.profile-photo:hover {
-  transform: scale(1.05);
-  box-shadow: 0 0 40px rgba(255, 215, 0, 0.8);
-}
-
-/* Текст о себе */
-.about div {
-  flex: 1;
-  min-width: 200px;
-}
-.about p {
-  font-size: 1.2em;
-  line-height: 1.5;
-}
-
-/* Навыки - карточки */
-.skills {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
-}
-
-.skill {
-  flex: 1 1 250px;
-  background-color: var(--dark-color);
-  padding: 15px;
-  border-radius: 10px;
-  border: 2px solid var(--border-color);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-
-.skill:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
-}
-
-.skill h3 {
-  margin-top: 0;
-  color: var(--accent-color);
-  font-size: 1.5em;
-}
-
-/* Проекты - карточки с картинками и кнопками */
-.projects {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 20px;
-}
-
-.project {
-  background-color: var(--dark-color);
-  padding: 15px;
-  border-radius: 8px;
-  border: 2px solid var(--border-color);
-  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
-  transition: transform 0.3s, box-shadow 0.3s;
-}
-.project:hover {
-  transform: scale(1.02);
-  box-shadow: 0 8px 16px rgba(0,0,0,0.4);
-}
-.project h3 {
-  margin-top: 0;
-  color: var(--accent-color);
-}
-
-/* Кнопки */
-button {
-  margin-top: 10px;
-  padding: 8px 12px;
-  background-color: var(--accent-color);
-  color: #111;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  font-weight: 700;
-  transition: background-color 0.3s;
-}
-button:hover {
-  background-color: #e6c200;
-}
-
-/* Контакты */
-.contacts {
-  background-color: var(--dark-color);
-  padding: 20px;
-  border-radius: 10px;
-  border: 2px solid var(--border-color);
-  animation: fadeIn 1s ease-in-out;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-.contacts p {
-  margin: 5px 0;
-}
-
-/* Футер */
-footer {
-  text-align: center;
-  padding: 10px;
-  background-color: var(--bg-color);
-  border-top: 2px solid var(--border-color);
-  font-size: 0.9em;
-  color: #ccc;
-}
-
-/* Анимации */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-/* Модальное окно */
-.modal {
-  display: none;
-  position: fixed;
-  z-index: 1000;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8);
-  animation: fadeInModal 0.5s;
-}
-@keyframes fadeInModal {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
-
-.modal-content {
-  background-color: var(--dark-color);
-  margin: 10% auto;
-  padding: 20px;
-  width: 90%;
-  max-width: 600px;
-  border-radius: 10px;
-  border: 2px solid var(--border-color);
-  color: var(--accent-color);
-  position: relative;
-  animation: slideIn 0.3s ease-out;
-}
-@keyframes slideIn {
-  from { transform: translateY(-50px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
-}
-
-.close {
-  position: absolute;
-  top: 10px;
-  right: 15px;
-  font-size: 28px;
-  font-weight: bold;
-  cursor: pointer;
-  transition: color 0.3s;
-}
-.close:hover {
-  color: #fff;
-}
-
-/* Ссылки */
-a {
-  color: var(--accent-color);
-  text-decoration: none;
-}
-a:hover {
-  text-decoration: underline;
-}
-
-/* Медиа-запросы для очень маленьких экранов */
-@media(max-width: 400px) {
-  h1 { font-size: 2em; }
-  h2 { font-size: 1.5em; }
-  .about {
-    flex-direction: column;
-    align-items: center;
-  }
-  .profile-photo { width: 120px; height: 120px; }
-  .about p { font-size: 1em; }
-  .skill { flex: 1 1 200px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Портфолио Ивана Иванова</title>
+  <meta name="description" content="Портфолио Ивана Иванова - менеджер по продажам с 10+ лет опыта. Навыки, проекты и контакты.">
+  <meta name="keywords" content="менеджер по продажам, портфолио, навыки продаж, CRM">
+  <meta property="og:title" content="Портфолио Ивана Иванова">
+  <meta property="og:description" content="Профессиональный менеджер по продажам...">
+  <meta property="og:image" content="https://via.placeholder.com/150">
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" as="style">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap">
+  <!-- Подключение внешних иконок (опционально, для Font Awesome) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Подключение styles.css -->
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <header>
+    <h1>Иван Иванов</h1>
+    <p>Менеджер по продажам</p>
+    <!-- Навигационное меню 
+    <nav>
+      <ul>
+        <li><a href="#about">Обо мне</a></li>
+        <li><a href="#education">Образование</a></li>
+        <li><a href="#skills">Навыки</a></li>
+        <li><a href="#projects">Проекты</a></li>
+        <li><a href="#contacts">Контакты</a></li>
+      </ul>
+    </nav>-->
+  </header>
 
-<div class="content">
-
-  <h1>Портфолио менеджера по продажам</h1>
-
-  <div style="display: flex; flex-direction: column; align-items: center; margin-bottom: 20px;">
-  <img src="https://via.placeholder.com/150" alt="Мое фото" class="profile-photo" style="width: 150px; height: 150px; border-radius: 50%; border: 3px solid var(--accent-color); box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);">
-  <h2 style="margin: 10px 0 0 0;">Иван Иванов</h2>
-</div>
-
-  <section id="about">
-    <div class="about">
-    
-      <div>
-        <h2>Об о мне</h2>
-        <p>Я профессиональный менеджер по продажам с опытом более 10 лет, умею выстраивать доверительные отношения с клиентами, достигать высоких результатов и работать в команде. Люблю помогать бизнесам расти и развиваться.</p>
+  <main>
+    <section id="about">
+      <h2>Обо мне</h2>
+      <div class="about-content">
+        <img src="https://via.placeholder.com/150" alt="Фото Ивана Иванова" class="profile-photo" loading="lazy">
+        <p>Менеджер по продажам с более чем 10-летним опытом работы в B2B-секторе. Специализируюсь на ведении ключевых клиентов, анализе рынка и оптимизации процессов продаж. Имею опыт работы с CRM-системами и организации обучающих программ.</p>
       </div>
-    </div>
-  </section>
+    </section>
 
-<section id="education">
-  <h2 style="text-align: center; margin-bottom: 20px;">Образование</h2>
-  <div style="background-color: var(--dark-color); padding: 20px; border-radius: 10px; border: 2px solid var(--border-color); max-width: 800px; margin: 0 auto;">
-    <h3 style="color: var(--accent-color); margin-top: 0;">Высшее учебное заведение</h3>
-    <p>Институт информационных технологий, специальность "Менеджмент", 2010-2014.</p>
-    <h3 style="color: var(--accent-color); margin-top: 20px;">Дополнительное образование</h3>
-    <ul>
-      <li>Курсы по продажам и переговорным техникам, 2015</li>
-      <li>Тренинги по личностному росту, 2018</li>
-    </ul>
+    <section id="education">
+      <h2>Образование</h2>
+      <ul>
+        <li><strong>МГУ им. М.В. Ломоносова</strong> - Экономика (2005-2009)</li>
+        <li><strong>Курсы повышения квалификации</strong> - Продажи и маркетинг (2015)</li>
+      </ul>
+    </section>
+
+    <section id="skills">
+      <h2>Навыки</h2>
+      <div class="skills-grid">
+        <div class="skill-item">
+          <h3>Продажи</h3>
+          <p>Опыт ведения переговоров и закрытия сделок на суммы от 1 млн руб.</p>
+        </div>
+        <div class="skill-item">
+          <h3>CRM</h3>
+          <p>Bitrix24, Salesforce - автоматизация процессов и аналитика.</p>
+        </div>
+        <div class="skill-item">
+          <h3>Анализ данных</h3>
+          <p>Excel, Google Analytics - составление отчётов и прогнозирование.</p>
+        </div>
+        <div class="skill-item">
+          <h3>Лидерство</h3>
+          <p>Руководство командой из 5+ человек, организация тренингов.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <h2>Проекты</h2>
+      <div class="projects-grid">
+        <div class="project-item">
+          <h3>Оптимизация отдела продаж</h3>
+          <p>Увеличил конверсию на 30% за 6 месяцев.</p>
+          <button class="btn open-modal" data-modal="project1">Подробнее</button>
+        </div>
+        <div class="project-item">
+          <h3>Внедрение CRM</h3>
+          <p>Автоматизировал процессы для 20+ клиентов.</p>
+          <button class="btn open-modal" data-modal="project2">Подробнее</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="contacts">
+      <h2>Контакты</h2>
+      <p><i class="fas fa-phone"></i> +7 (123) 456-78-90</p>
+      <p><i class="fas fa-envelope"></i> ivan.ivanov@email.com</p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://linkedin.com/in/ivanivanov">LinkedIn</a></p>
+      <p><i class="fab fa-github"></i> <a href="https://github.com/ivanivanov">GitHub</a></p>
+    </section>
+  </main>
+
+  <!-- Модальные окна -->
+  <div id="modal" class="modal" role="dialog" aria-labelledby="modal-title" aria-hidden="true">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h3 id="modal-title">Подробности проекта</h3>
+      <p id="modal-text">Здесь будут детали проекта.</p>
+    </div>
   </div>
-</section>
 
-  <section id="skills">
-    <h2>Навыки</h2>
-    <div class="skills">
-      <div class="skill">
-        <h3>Коммуникации</h3>
-        <p>Отличные навыки ведения переговоров и презентаций.</p>
-      </div>
-      <div class="skill">
-        <h3>Заключение сделок</h3>
-        <p>Опыт успешного закрытия крупных контрактов.</p>
-      </div>
-      <div class="skill">
-        <h3>Аналитика</h3>
-        <p>Анализ рынка и клиентской базы для повышения эффективности продаж.</p>
-      </div>
-    </div>
-  </section>
+  <footer>
+    <p>&copy; 2023 Иван Иванов. Все права защищены.</p>
+  </footer>
 
-  <section id="projects">
-    <h2 style="text-align:center; margin-bottom:20px;">Проекты</h2>
-    <div class="projects">
-      <div class="project">
-        <h3>Проект A</h3>
-        <p>Описание проекта A.</p>
-        <button onclick="showModal('Проект A', 'Детали проекта A - это было интересно!')">Подробнее</button>
-      </div>
-      <div class="project">
-        <h3>Проект B</h3>
-        <p>Описание проекта B.</p>
-        <button onclick="showModal('Проект B', 'Детали проекта B - успешная реализация.')">Подробнее</button>
-      </div>
-      <div class="project">
-        <h3>Проект C</h3>
-        <p>Описание проекта C.</p>
-        <button onclick="showModal('Проект C', 'Детали проекта C - инновационный подход.')">Подробнее</button>
-      </div>
-    </div>
-  </section>
-
-  <section id="contacts" class="contacts">
-  <h2>Контакты</h2>
-  <p><strong>Телефон:</strong> +7 (123) 456-78-90</p>
-  <p><strong>Email:</strong> ivan.ivanov@email.com</p>
-  <p><strong>Адрес:</strong> г. Москва, ул. Примерная, д. 1</p>
-  <p><a href="https://vk.com/ivanivanov" target="_blank">VK</a> | <a href="https://linkedin.com/in/ivanivanov" target="_blank">LinkedIn</a></p>
-</section>
+  <!-- Подключение script.js -->
+  <script src="script.js" defer></script>
+</body>
+</html>
